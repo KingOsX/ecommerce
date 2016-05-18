@@ -1,0 +1,23 @@
+{% extends "VapamaxMainBundle::main_n2.html.twig" %}
+{% block presentation %}
+<div class="container">
+
+
+       <h2>Vos information personnelles</h2>
+
+
+
+
+
+        <div class="col-md-8 col-md-offset-2">
+            <div>
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <br>
+                <input type="submit" class="btn btn-primary pull-right">
+                {{ form_end(form) }}
+            </div>
+        </div>
+</div>
+
+{% endblock %}

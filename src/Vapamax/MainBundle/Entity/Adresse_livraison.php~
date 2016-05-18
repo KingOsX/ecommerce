@@ -1,0 +1,157 @@
+<?php
+
+namespace Vapamax\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Adresse_livraison
+ *
+ * @ORM\Table(name="adresse_livraison")
+ * @ORM\Entity(repositoryClass="Vapamax\MainBundle\Repository\Adresse_livraisonRepository")
+ */
+class Adresse_livraison
+{
+    /**
+     * DRAW many to one CATEGORY(mémo)
+     * @ORM\ManyToOne(targetEntity="Utilisateurs\UserBundle\Entity\Utilisateur")
+     * @ORM\JoinColumn (name="utilisateur_id",referencedColumnName="id",onDelete="CASCADE")
+     */
+    private $utilisateur;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse_livraison", type="string", length=255)
+     */
+    private $adresseLivraison;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cp_livraison", type="string", length=255)
+     */
+    private $villeLivraison;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="ville_livraison", type="integer")
+     */
+    private $cpLivraison;
+
+
+
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set adresseLivraison
+     *
+     * @param string $adresseLivraison
+     * @return Adresse_livraison
+     */
+    public function setAdresseLivraison($adresseLivraison)
+    {
+        $this->adresseLivraison = $adresseLivraison;
+
+        return $this;
+    }
+
+    /**
+     * Get adresseLivraison
+     *
+     * @return string 
+     */
+    public function getAdresseLivraison()
+    {
+        return $this->adresseLivraison;
+    }
+
+    /**
+     * Set villeLivraison
+     *
+     * @param string $villeLivraison
+     * @return Adresse_livraison
+     */
+    public function setVilleLivraison($villeLivraison)
+    {
+        $this->villeLivraison = $villeLivraison;
+
+        return $this;
+    }
+
+    /**
+     * Get villeLivraison
+     *
+     * @return string 
+     */
+    public function getVilleLivraison()
+    {
+        return $this->villeLivraison;
+    }
+
+    /**
+     * Set cpLivraison
+     *
+     * @param integer $cpLivraison
+     * @return Adresse_livraison
+     */
+    public function setCpLivraison($cpLivraison)
+    {
+        $this->cpLivraison = $cpLivraison;
+
+        return $this;
+    }
+
+    /**
+     * Get cpLivraison
+     *
+     * @return integer 
+     */
+    public function getCpLivraison()
+    {
+        return $this->cpLivraison;
+    }
+
+    /**
+     * Set utilisateur
+     *
+     * @param \Utilisateurs\UserBundle\Entity\Utilisateur $utilisateur
+     * @return Adresse_livraison
+     */
+    public function setUtilisateur(\Utilisateurs\UserBundle\Entity\Utilisateur $utilisateur = null)
+    {
+        $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    /**
+     * Get utilisateur
+     *
+     * @return \Utilisateurs\UserBundle\Entity\Utilisateur 
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
+    }
+}

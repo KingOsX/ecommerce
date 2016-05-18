@@ -1,0 +1,4 @@
+services:
+#    vapamax_user.example:
+#        class: Vapamax\UserBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

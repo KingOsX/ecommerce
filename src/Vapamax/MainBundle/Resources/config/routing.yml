@@ -1,0 +1,62 @@
+vapamax_main_eliquide:
+    resource: "@VapamaxMainBundle/Resources/config/routing/eliquide.yml"
+    prefix:   /eliquide
+
+vapamax_main_commandeproduit:
+    resource: "@VapamaxMainBundle/Resources/config/routing/commandeproduit.yml"
+    prefix:   /commandeproduit
+
+
+
+vapamax_main_homepage:
+    path:     /
+    defaults: { _controller: VapamaxMainBundle:Main:index }
+
+vapamax_main_panier:
+    path:     /panier
+    defaults: { _controller: VapamaxMainBundle:Panier:voir }
+
+
+vapamax_main_panier_ajout:
+    path:     /panier/ajout/{id}/{qte}
+    defaults: { _controller: VapamaxMainBundle:Panier:ajout, qte:1 }
+    requirements:
+      id: \d+
+      qte: \d+
+
+
+
+vapamax_main_supprimer:
+    path:     /supprimer/{id}
+    defaults: { _controller: VapamaxMainBundle:Panier:supprimer }
+    requirements:
+          id: \d+
+
+vapamax_main_categorie:
+    path:     /produit/categorie/{categorie}
+    defaults: { _controller: VapamaxMainBundle:Main:categorie }
+
+vapamax_main_presentation:
+    path:     /produit/presentation/{id}
+    defaults: { _controller: VapamaxMainBundle:Main:presentation }
+
+
+vapamax_main_livraison:
+      path:  panier/livraison
+      defaults: {_controller: VapamaxMainBundle:Main:livraison}
+
+vapamax_main_profil:
+      path:  /create
+      defaults: {_controller: VapamaxMainBundle:Main:create}
+
+vapamax_main_validation:
+    path:     /panier/validation/{id}
+    defaults: { _controller: VapamaxMainBundle:Panier:validation }
+
+vapamax_main_prepare:
+    path:     /panier/prepare
+    defaults: { _controller: VapamaxMainBundle:Panier:prepareCommande }
+
+
+
+

@@ -1,0 +1,58 @@
+{% extends 'VapamaxMainBundle::main_n2.html.twig' %}
+{% block presentation %}
+    <div class="container">
+        <div class="col-md-12 ">
+            {% for produit in produits %}
+                <hr>
+                <div class="col-md-6 ">
+                    <div class="img-presentation text-center">
+                        <img src="{{ asset('uploads/produits/'~produit.path) }}" class="img-thumbnail" >
+
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <h2>{{ produit.nom }}</h2>
+                    <ul>
+                        <li>{{ produit.description }} </li>
+                        <br/>
+                        <li class="presentation-prix">{{ produit.prix |number_format(2, '.', ',') }} &nbsp;&euro;</li>
+
+                    </ul>
+                    <hr>
+                    <form class="form-inline" action="{{ path('vapamax_main_panier_ajout', {'id':produit.id}) }}" method="POST">
+                        <div class="form-group">
+                    {% if produit.categorie.nom=='E-liquides' %}
+                            <label for="sel1">Nicotine:</label>
+
+                            <select name="nicotine" class="form-control" id="sel1">
+                                {% for nicotine in produit.nicotine   %}
+                                <option name="nicotine" value="{{ nicotine.id }}">{{ nicotine.libelle}}</option>
+                                {% endfor %}
+                            </select>
+                    {% endif %}
+                            <label for="sel1">Quantité:</label>
+
+                            <select class="form-control" id="sel2" name="qte">
+                                {% for i in 1..10 %}
+                                    <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        {#<hr>#}
+                        {#<br>#}
+                        {#<input class="btn btn-success btn-lg center-block" type="submit" value="Ajouter au panier">#}
+                        <button class="btn btn-danger btn-lg pull-right"  type="submit">Ajouter au panier  <span class="glyphicon glyphicon-shopping-cart"></span></button>
+                        {#<a class="btn btn-success btn-lg center-block" href="">Ajouter au panier</a>#}
+                    </form>
+
+
+                </div>
+                <hr>
+
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,108 @@
+{% extends "@VapamaxMain/main_n2.html.twig" %}
+{% block presentation %}
+
+
+    {% set totalTTC = 0%}
+    {% set totalHT = 0%}
+
+
+    <div class="container">
+        <h2>Etape 3: Validation</h2>
+        <hr>
+        {% if panier is empty %}
+            <div class="alert alert-info">
+                <p>Votre panier est vide</p>
+            </div>
+        {% else %}
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                <div class="alert alert-success">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+            <table class="table table-hover table-bordered">
+                <thead>
+                <tr>
+                    <th style="text-align: center">Photo</th>
+                    <th style="text-align: center">Références</th>
+                    <th style="text-align: center">Quantité</th>
+                    <th style="text-align: center">Description</th>
+                    <th style="text-align: center">Prix unitaire</th>
+                    <th style="text-align: center">Total TTC</th>
+                    {#<th style="text-align: center">Code promo</th>#}
+                </tr>
+                </thead>
+                <tbody>
+
+
+                {% for produit in panier %}
+
+                    <tr>
+
+                    <tr>
+                        <td style="text-align: center">
+                            <img src="{{ asset('bundles/app/images/'~produit.produit.id~'.jpg') }}" class="img-thumbnail"
+                                 alt="Cinque Terre" width="100" height="100">
+                        </td>
+
+                        <td style="line-height:normal;text-align: center">{{ produit.produit.nom }}</td>
+                        <td style="line-height: 100px;text-align: center">
+                            {#<select  name="qte" class="span1 qte" target="{{ path('vapamax_main_panier_ajout',{'id':produit.produit.id}) }}/">#}
+                                {#&#123;&#35;{% for i in 1..10 %}&#35;&#125;#}
+                                    {#&#123;&#35;<option value="{{ i }}" {% if i == produit.qte %} selected="selected" {% endif %}>{{ produit.qte }}</option>&#35;&#125;#}
+                                {#&#123;&#35;{% endfor %}&#35;&#125;#}
+                                {#<option value="">{{ produit.qte }}</option>#}
+                            {#</select>&nbsp;#}
+                            {{ produit.qte }}
+
+                        </td>
+                        <td style="width: 50%;text-align: center"> {{ produit.produit.description }}</td>
+                        <td style="line-height: 100px;text-align: center">{{ produit.produit.prix }} €</td>
+                        <td style="line-height: 100px;text-align: center">{{ produit.produit.prix * produit.qte }} €</td>
+
+
+
+                    </tr>
+                    {% set totalTTC = totalTTC + (produit.produit.prix * produit.qte) %}
+                {% endfor %}
+
+                </tbody>
+                <tfoot>
+                <tr>
+                    {% set totalHT=totalTTC/1.2 %}
+                    <td colspan="6"><strong class="pull-right">Montant HT&nbsp;&nbsp;{{ totalHT|number_format(2, '.', ',') }}&nbsp;€</strong></td>
+
+                </tr>
+                <tr>
+                    <td colspan="6"><strong class="pull-right">Montant TTC&nbsp;&nbsp;{{ totalTTC|number_format(2, '.', ',')  }}&nbsp;€</strong></td>
+                </tr>
+                </tfoot>
+
+            </table>
+        {% endif %}
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+            <a class="btn btn-success pull-right" href="{{ path('vapamax_main_prepare') }}">Payer</a>
+            <a class="btn btn-info pull-left" href="{{ app.request.headers.get('referer') }}">Retour</a>
+        {% else %}
+            <a class="btn btn-success pull-right" href="{{ path('fos_user_registration_register') }}">Finaliser ma commande</a>
+            <a class="btn btn-info pull-left" href="{{ app.request.headers.get('referer') }}">Continuez mes achats</a>
+        {% endif %}
+    </div>
+    <br><br>
+    <hr>
+    {{ adresse.rue }}
+    {{ dump(adresse) }}
+
+
+{% endblock %}
+{% block javascript %}
+    {{ parent() }}
+    <script>
+        $(function(){
+            $('.qte').on("change",function(){
+                window.location.href= $(this).attr("target")+$(this).val();
+            })
+        })
+    </script>
+
+{% endblock %}

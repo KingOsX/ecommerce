@@ -1,0 +1,274 @@
+<?php
+
+namespace Vapamax\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Client
+ *
+ * @ORM\Table(name="client")
+ * @ORM\Entity(repositoryClass="Vapamax\MainBundle\Repository\ClientRepository")
+ */
+class Client
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=50)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=50)
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=50)
+     */
+    private $email;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_naissance", type="date", nullable=true)
+     */
+    private $dateNaissance;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse_domicile", type="string", length=255)
+     */
+    private $adresseDomicile;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ville_domicile", type="string", length=50)
+     */
+    private $villeDomicile;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="cp_domicile", type="integer")
+     */
+    private $cpDomicile;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", nullable=true)
+     */
+    private $createdAt;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     * @return Client
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string 
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set prenom
+     *
+     * @param string $prenom
+     * @return Client
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    /**
+     * Get prenom
+     *
+     * @return string 
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Client
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set dateNaissance
+     *
+     * @param \DateTime $dateNaissance
+     * @return Client
+     */
+    public function setDateNaissance($dateNaissance)
+    {
+        $this->dateNaissance = $dateNaissance;
+
+        return $this;
+    }
+
+    /**
+     * Get dateNaissance
+     *
+     * @return \DateTime 
+     */
+    public function getDateNaissance()
+    {
+        return $this->dateNaissance;
+    }
+
+    /**
+     * Set adresseDomicile
+     *
+     * @param string $adresseDomicile
+     * @return Client
+     */
+    public function setAdresseDomicile($adresseDomicile)
+    {
+        $this->adresseDomicile = $adresseDomicile;
+
+        return $this;
+    }
+
+    /**
+     * Get adresseDomicile
+     *
+     * @return string 
+     */
+    public function getAdresseDomicile()
+    {
+        return $this->adresseDomicile;
+    }
+
+    /**
+     * Set villeDomicile
+     *
+     * @param string $villeDomicile
+     * @return Client
+     */
+    public function setVilleDomicile($villeDomicile)
+    {
+        $this->villeDomicile = $villeDomicile;
+
+        return $this;
+    }
+
+    /**
+     * Get villeDomicile
+     *
+     * @return string 
+     */
+    public function getVilleDomicile()
+    {
+        return $this->villeDomicile;
+    }
+
+    /**
+     * Set cpDomicile
+     *
+     * @param integer $cpDomicile
+     * @return Client
+     */
+    public function setCpDomicile($cpDomicile)
+    {
+        $this->cpDomicile = $cpDomicile;
+
+        return $this;
+    }
+
+    /**
+     * Get cpDomicile
+     *
+     * @return integer 
+     */
+    public function getCpDomicile()
+    {
+        return $this->cpDomicile;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return Client
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+}

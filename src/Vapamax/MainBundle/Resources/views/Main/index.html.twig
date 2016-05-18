@@ -1,0 +1,288 @@
+{#Heritage du templete de niveau 2#}
+{% extends "VapamaxMainBundle::main_n2.html.twig" %}
+{% block presentation %}
+{#--------------------------***SLIDER*****--------------------------------------#}
+<div id="slideshowWrapper col-md-10 col-md-offset-1">
+    <ul id="slideshow">
+        <li><img src="{{ asset('bundles/app/images/slider1.jpg') }}" border="0" alt="" /></li>
+        <li><img src="{{ asset('bundles/app/images/slider2.jpg') }}" border="0" alt="" /></li>
+        <li><img src="{{ asset('bundles/app/images/slider3.jpg') }}" border="0" alt="" /></li>
+        <li><img src="{{ asset('bundles/app/images/slider4.jpg') }}" border="0" alt="" /></li>
+    </ul><br clear="all" />
+</div>
+
+
+{#--------------------------            FIN SLIDER      --------------------------------------#}
+
+    <div class="menu_barre"><h4 style="font-family: Impact;font-size: 30px" class="well"  align="center">Nouveautés</h4></div>
+
+
+        <div class="row">
+            <div class="col-md-12 slider">
+                {% for produit in produits %}
+
+
+                    <div class="col-md-2 col-xs-12">
+                                <div class="wrapper">
+                       {#{% if produit.categorie.id == 2 %}#}
+                            {#<img src=" http://dummyimage.com/250x250/000/fff.jpg&text=Vapamax" class="img-thumbnail" >#}
+                            {#{% else %}#}
+                               <img src="{{ asset('uploads/produits/'~produit.path) }}" class="img-thumbnail" >
+                               {#{% endif %}#}
+
+
+                            <div class="ribbon-wrapper-green"><div class="ribbon-green">NOUVEAU</div></div>
+
+                                </div>
+
+                        <br/><br>
+                        <div class="stup">
+                        <p style="font-size: 26px" align="center"><b>{{ produit.prix |number_format(2, '.', ',') }}
+                                &nbsp;&euro;</b></p>
+                        <h6 align="center"><b>{{ produit.nom }}</b></h6>
+                        <p style="font-size: 10px" align="center">
+                            {{ produit.description| striptags | slice(0, 90) }}
+                        </p>
+
+                        <a class="btn btn-success btn-block" href="
+                        {% if produit.categorie.id==2 %}
+
+                        {{  path('vapamax_main_presentation', {'id':produit.id}) }}
+                        {% else %}
+                         {{  path('vapamax_main_panier_ajout', {'id':produit.id}) }}
+                        {% endif %}
+                        ">AJOUTER AU PANIER</a>
+                        <a class="btn btn-info btn-block" href="{{  path('vapamax_main_presentation', {'id':produit.id}) }}">EN SAVOIR + </a>
+                        {#<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Ajouter au panier</button>#}
+
+
+
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>{#col-md-12#}
+        </div>{#row#}
+        {#<div class="container">#}
+
+  {#<!-- Trigger the modal with a button -->#}
+
+
+  {#<!-- Modal -->#}
+  {#<div class="modal fade" id="myModal" role="dialog">#}
+    {#<div class="modal-dialog">#}
+
+      {#<!-- Modal content-->#}
+      {#<div class="modal-content">#}
+        {#<div class="modal-header">#}
+          {#<button type="button" class="close" data-dismiss="modal">&times;</button>#}
+          {#<h4 class="modal-title">Votre Panier</h4>#}
+        {#</div>#}
+        {#<div class="modal-body">#}
+          {#<p>Vous venez d'ajouter un produit à votre panier</p>#}
+
+        {#</div>#}
+        {#<div class="modal-footer">#}
+          {#<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Continuez mes achats</button>#}
+          {#<button type="button" class="btn btn-default pull-right" data-dismiss="modal">Voir mon panier</button>#}
+
+        {#</div>#}
+      {#</div>#}
+
+    {#</div>  #}
+  {#</div>#}
+
+{#</div>#}
+
+        <br/><br/>
+        {#-----------------------           Ceci New Block              ----------------------#}
+
+        <div class="menu_barre" style="width: 100%"><h4 style="font-family: Impact;font-size: 30px" class="well"  align="center">LES MEILLEURS VENTES DU MOIS</h4></div>
+        <br/><br/>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 center">
+                    <div class="col-md-2 col1">
+                        <img src="http://www.ecigdeland.com/five-pawns-e-liquid.jpg" class="img-thumbnail"
+                             alt="Cinque Terre" width="304" height="236">
+                        <br/><br>
+                        <p style="font-size: 26px" align="center"><b>22.95€</b></p>
+                        <h6 align="center"><b>E-liquides Fives Pains</b></h6>
+                        <p style="font-size: 10px" align="center">
+                            Est pernoctant nulli nulli aliqui
+                            per per scrutantes in certant fatiscunt tabernis
+                            pernoctant naribus theatralium quae pernoctant
+                            fatiscunt naribus ad.
+                        </p>
+
+                        <button class="btn btn-success center-block">Ajouter au panier</button>
+
+                    </div>
+                    <div class="col-md-2 col1">
+                        <img src="http://www.ecigdeland.com/five-pawns-e-liquid.jpg" class="img-thumbnail"
+                             alt="Cinque Terre" width="304" height="236">
+                        <br/><br>
+                        <p style="font-size: 26px" align="center"><b>2.50€</b></p>
+                        <h6 align="center"><b>E-liquides Fives Pains</b></h6>
+                        <p style="font-size: 10px" align="center">
+                            Est pernoctant nulli nulli aliqui
+                            per per scrutantes in certant fatiscunt tabernis
+                            pernoctant naribus theatralium quae pernoctant
+                            fatiscunt naribus ad.
+                        </p>
+
+                        <button class="btn btn-success center-block">Ajouter au panier</button>
+
+                    </div>
+                    <div class="col-md-2 col1">
+                        <img src="http://www.ecigdeland.com/five-pawns-e-liquid.jpg" class="img-thumbnail"
+                             alt="Cinque Terre" width="304" height="236">
+                        <br/><br>
+                        <p style="font-size: 26px" align="center"><b>7.95€</b></p>
+                        <h6 align="center"><b>E-liquides Fives Pains</b></h6>
+                        <p style="font-size: 10px" align="center">
+                            Est pernoctant nulli nulli aliqui
+                            per per scrutantes in certant fatiscunt tabernis
+                            pernoctant naribus theatralium quae pernoctant
+                            fatiscunt naribus ad.
+                        </p>
+
+                        <button class="btn btn-success center-block">Ajouter au panier</button>
+
+                    </div>
+                    <div class="col-md-2 col1">
+                        <img src="http://www.ecigdeland.com/five-pawns-e-liquid.jpg" class="img-thumbnail"
+                             alt="Cinque Terre" width="304" height="236">
+                        <br/><br>
+                        <p style="font-size: 26px" align="center"><b>9.95€</b></p>
+                        <h6 align="center"><b>E-liquides Fives Pains</b></h6>
+                        <p style="font-size: 10px" align="center">
+                            Est pernoctant nulli nulli aliqui
+                            per per scrutantes in certant fatiscunt tabernis
+                            pernoctant naribus theatralium quae pernoctant
+                            fatiscunt naribus ad.
+                        </p>
+
+                        <button class="btn btn-success center-block">Ajouter au panier</button>
+
+                    </div>
+                    <div class="col-md-2 col1">
+                        <img src="http://www.ecigdeland.com/five-pawns-e-liquid.jpg" class="img-thumbnail"
+                             alt="Cinque Terre" width="304" height="236">
+                        <br/><br>
+                        <p style="font-size: 26px" align="center"><b>27.95€</b></p>
+                        <h6 align="center"><b>E-liquides Fives Pains</b></h6>
+                        <p style="font-size: 10px" align="center">
+                            Est pernoctant nulli nulli aliqui
+                            per per scrutantes in certant fatiscunt tabernis
+                            pernoctant naribus theatralium quae pernoctant
+                            fatiscunt naribus ad.
+                        </p>
+
+                        <button class="btn btn-success center-block">Ajouter au panier</button>
+
+                    </div>
+
+
+                </div>{#col-md-12 offset#}
+            </div>{#row#}
+        </div>{#container#}
+
+    </div>
+    </div>
+
+
+
+    <br>
+    <br>
+    <div><h4 style="font-family: Impact;font-size: 30px"  class="well" align="center">NOTRE SELECTION POUR VOUS</h4></div>
+    <div class="container">
+    <div class="row">
+    <div class="col-md-12 col-md-offset-0">
+        <div class="col-md-2 col1">
+            <img src="http://www.ecigdeland.com/five-pawns-e-liquid.jpg" class="img-thumbnail"
+                 alt="Cinque Terre" width="304" height="236">
+            <br/><br>
+            <p style="font-size: 26px" align="center"><b>22.95€</b></p>
+            <h6 align="center"><b>E-liquides Fives Pains</b></h6>
+            <p style="font-size: 10px" align="center">
+                Est pernoctant nulli nulli aliqui
+                per per scrutantes in certant fatiscunt tabernis
+                pernoctant naribus theatralium quae pernoctant
+                fatiscunt naribus ad.
+            </p>
+
+            <button class="btn btn-success center-block">Ajouter au panier</button>
+
+        </div>
+        <div class="col-md-2 col1">
+            <img src="http://www.ecigdeland.com/five-pawns-e-liquid.jpg" class="img-thumbnail"
+                 alt="Cinque Terre" width="304" height="236">
+            <br/><br>
+            <p style="font-size: 26px" align="center"><b>2.50€</b></p>
+            <h6 align="center"><b>E-liquides Fives Pains</b></h6>
+            <p style="font-size: 10px" align="center">
+                Est pernoctant nulli nulli aliqui
+                per per scrutantes in certant fatiscunt tabernis
+                pernoctant naribus theatralium quae pernoctant
+                fatiscunt naribus ad.
+            </p>
+
+            <button class="btn btn-success center-block">Ajouter au panier</button>
+
+        </div>
+        <div class="col-md-2 col1">
+            <img src="http://www.ecigdeland.com/five-pawns-e-liquid.jpg" class="img-thumbnail"
+                 alt="Cinque Terre" width="304" height="236">
+            <br/><br>
+            <p style="font-size: 26px" align="center"><b>7.95€</b></p>
+            <h6 align="center"><b>E-liquides Fives Pains</b></h6>
+            <p style="font-size: 10px" align="center">
+                Est pernoctant nulli nulli aliqui
+                per per scrutantes in certant fatiscunt tabernis
+                pernoctant naribus theatralium quae pernoctant
+                fatiscunt naribus ad.
+            </p>
+
+            <button class="btn btn-success center-block">Ajouter au panier</button>
+
+        </div>
+        <div class="col-md-2 col1">
+            <img src="http://www.ecigdeland.com/five-pawns-e-liquid.jpg" class="img-thumbnail"
+                 alt="Cinque Terre" width="304" height="236">
+            <br/><br>
+            <p style="font-size: 26px" align="center"><b>9.95€</b></p>
+            <h6 align="center"><b>E-liquides Fives Pains</b></h6>
+            <p style="font-size: 10px" align="center">
+                Est pernoctant nulli nulli aliqui
+                per per scrutantes in certant fatiscunt tabernis
+                pernoctant naribus theatralium quae pernoctant
+                fatiscunt naribus ad.
+            </p>
+
+            <button class="btn btn-success center-block">Ajouter au panier</button>
+
+        </div>
+        <div class="col-md-2 col1">
+            <img src="http://www.ecigdeland.com/five-pawns-e-liquid.jpg" class="img-thumbnail"
+                 alt="Cinque Terre" width="304" height="236">
+            <br/><br>
+            <p style="font-size: 26px" align="center"><b>27.95€</b></p>
+            <h6 align="center"><b>E-liquides Fives Pains</b></h6>
+            <p style="font-size: 10px" align="center">
+                Est pernoctant nulli nulli aliqui
+                per per scrutantes in certant fatiscunt tabernis
+                pernoctant naribus theatralium quae pernoctant
+                fatiscunt naribus ad.
+            </p>
+
+            <button class="btn btn-success center-block">Ajouter au panier</button>
+
+        </div>
+
+
+    </div>{#col-md-12 offset#}
+    </div>{#row#}
+    </div>{#container#}
+    <br><br>
+{% endblock %}

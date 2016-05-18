@@ -1,0 +1,153 @@
+<?php
+
+namespace Vapamax\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Adresse_livraion
+ *
+ * @ORM\Table(name="adresse_livraion")
+ * @ORM\Entity(repositoryClass="Vapamax\MainBundle\Repository\Adresse_livraionRepository")
+ */
+class Adresse_livraion
+{
+    /**
+     * DRAW many to one CATEGORY(mémo)
+     * @ORM\ManyToOne(targetEntity="Vapamax\MainBundle\Entity\Client")
+     * @ORM\JoinColumn (name="client_id",referencedColumnName="id",onDelete="CASCADE")
+     */
+    private $client;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse_livraison", type="string", length=255)
+     */
+    private $adresseLivraison;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cp_livraison", type="string", length=255)
+     */
+    private $villeLivraison;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="ville_livraison", type="integer")
+     */
+    private $cpLivraison;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set adresseLivraison
+     *
+     * @param string $adresseLivraison
+     * @return Adresse_livraion
+     */
+    public function setAdresseLivraison($adresseLivraison)
+    {
+        $this->adresseLivraison = $adresseLivraison;
+
+        return $this;
+    }
+
+    /**
+     * Get adresseLivraison
+     *
+     * @return string 
+     */
+    public function getAdresseLivraison()
+    {
+        return $this->adresseLivraison;
+    }
+
+    /**
+     * Set cpLivraison
+     *
+     * @param string $cpLivraison
+     * @return Adresse_livraion
+     */
+    public function setCpLivraison($cpLivraison)
+    {
+        $this->cpLivraison = $cpLivraison;
+
+        return $this;
+    }
+
+    /**
+     * Get cpLivraison
+     *
+     * @return string 
+     */
+    public function getCpLivraison()
+    {
+        return $this->cpLivraison;
+    }
+
+    /**
+     * Set villeLivraison
+     *
+     * @param integer $villeLivraison
+     * @return Adresse_livraion
+     */
+    public function setVilleLivraison($villeLivraison)
+    {
+        $this->villeLivraison = $villeLivraison;
+
+        return $this;
+    }
+
+    /**
+     * Get villeLivraison
+     *
+     * @return integer 
+     */
+    public function getVilleLivraison()
+    {
+        return $this->villeLivraison;
+    }
+
+    /**
+     * Set client
+     *
+     * @param \Vapamax\MainBundle\Entity\Client $client
+     * @return Adresse_livraion
+     */
+    public function setClient(\Vapamax\MainBundle\Entity\Client $client = null)
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    /**
+     * Get client
+     *
+     * @return \Vapamax\MainBundle\Entity\Client 
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+}

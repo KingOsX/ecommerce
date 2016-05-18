@@ -1,0 +1,405 @@
+<?php
+
+namespace Vapamax\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
+/**
+ * Produit
+ *
+ * @ORM\Table(name="produit")
+ * @ORM\Entity(repositoryClass="Vapamax\MainBundle\Repository\ProduitRepository")
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ */
+class Produit
+{
+    /**
+     * @ORM\ManyToOne(targetEntity="Vapamax\MainBundle\Entity\Categorie",cascade={"persist"})
+     */
+    private $categorie;
+
+
+
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="marque", type="string", length=255)
+     */
+    private $marque;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255)
+     */
+    private $description;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="prix", type="float")
+     */
+    private $prix;
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_new", type="boolean")
+     */
+    private $isNew;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_dispo", type="boolean")
+     */
+    private $isDispo;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_top", type="boolean")
+     */
+    private $isTop;
+
+    /**
+     * @var json_array
+     *
+     * @ORM\Column(name="options", type="json_array")
+     */
+    private $options;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $path;
+
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    private $file;
+
+
+
+    public function __construct()
+    {
+        $this->commandeProduits = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->options=array(
+            'nicotine'=>array('0mg','3mg','6mg','9mg','12mg')
+        );
+    }
+
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     * @return Produit
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string 
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set marque
+     *
+     * @param string $marque
+     * @return Produit
+     */
+    public function setMarque($marque)
+    {
+        $this->marque = $marque;
+
+        return $this;
+    }
+
+    /**
+     * Get marque
+     *
+     * @return string 
+     */
+    public function getMarque()
+    {
+        return $this->marque;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Produit
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set prix
+     *
+     * @param float $prix
+     * @return Produit
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    /**
+     * Get prix
+     *
+     * @return float 
+     */
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    /**
+     * Set isNew
+     *
+     * @param boolean $isNew
+     * @return Produit
+     */
+    public function setIsNew($isNew)
+    {
+        $this->isNew = $isNew;
+
+        return $this;
+    }
+
+    /**
+     * Get isNew
+     *
+     * @return boolean 
+     */
+    public function getIsNew()
+    {
+        return $this->isNew;
+    }
+
+    /**
+     * Set isDispo
+     *
+     * @param boolean $isDispo
+     * @return Produit
+     */
+    public function setIsDispo($isDispo)
+    {
+        $this->isDispo = $isDispo;
+
+        return $this;
+    }
+
+    /**
+     * Get isDispo
+     *
+     * @return boolean 
+     */
+    public function getIsDispo()
+    {
+        return $this->isDispo;
+    }
+
+    /**
+     * Set isTop
+     *
+     * @param boolean $isTop
+     * @return Produit
+     */
+    public function setIsTop($isTop)
+    {
+        $this->isTop = $isTop;
+
+        return $this;
+    }
+
+    /**
+     * Get isTop
+     *
+     * @return boolean 
+     */
+    public function getIsTop()
+    {
+        return $this->isTop;
+    }
+
+    /**
+     * Set categorie
+     *
+     * @param \Vapamax\MainBundle\Entity\Categorie $categorie
+     * @return Produit
+     */
+    public function setCategorie(\Vapamax\MainBundle\Entity\Categorie $categorie = null)
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * Get categorie
+     *
+     * @return \Vapamax\MainBundle\Entity\Categorie 
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
+
+
+
+
+    /**
+     * Set options
+     *
+     * @param array $options
+     * @return Produit
+     */
+    public function setOptions($options)
+    {
+        $this->options = $options;
+
+        return $this;
+    }
+
+    /**
+     * Get options
+     *
+     * @return array 
+     */
+    public function getOptions()
+    {
+        return $this->options;
+    }
+    public function getAbsolutePath()
+    {
+        return null === $this->path
+            ? null
+            : $this->getUploadRootDir().'/'.$this->path;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->path
+            ? null
+            : $this->getUploadDir().'/'.$this->path;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return 'uploads/produits';
+    }
+    /**
+     * Sets file.
+     *
+     * @param UploadedFile $file
+     */
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+    }
+
+    /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    public function upload()
+    {
+        // the file property can be empty if the field is not required
+        if (null === $this->getFile()) {
+            return;
+        }
+
+        // use the original file name here but you should
+        // sanitize it at least to avoid any security issues
+
+        // move takes the target directory and then the
+        // target filename to move to
+        $this->getFile()->move(
+            $this->getUploadRootDir(),
+            $this->getFile()->getClientOriginalName()
+        );
+
+        // set the path property to the filename where you've saved the file
+        $this->path = $this->getFile()->getClientOriginalName();
+
+        // clean up the file property as you won't need it anymore
+        $this->file = null;
+    }
+
+
+}

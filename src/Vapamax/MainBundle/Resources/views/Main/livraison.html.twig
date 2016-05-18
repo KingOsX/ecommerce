@@ -1,0 +1,72 @@
+{% extends "VapamaxMainBundle::main_n2.html.twig" %}
+{% block presentation %}
+
+<div class="container">
+    <h2>Etape 2: Livraison</h2>
+    <hr>
+
+    <div class="col-md-6">
+        <h2>Ajouter une adresse de Livraison</h2>
+        <hr>
+
+            <div>
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <br>
+                <input type="submit" class="btn btn-primary pull-right btn-block">
+                {{ form_end(form) }}
+            </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <h2>Selectionner une adresse de livraison</h2>
+        <hr>
+        <form action="{{ path('vapamax_main_validation',{'id':user.id}) }}" method="POST">
+            {% if adresse is defined %}
+            <h3>Adresse Domicile</h3>
+            <div class="radio ">
+                <label for="radio">
+                    <input type="radio" id="radio" name="addr" value="{{ app.user.adresseDomicile.id }}">
+
+                    <dl>
+
+                        <dt>{{ app.user.adresseDomicile.nom}}&nbsp; {{ app.user.adresseDomicile.prenom}}</dt>
+                        <dd> {{ app.user.adresseDomicile.numero}}&nbsp;  {{ app.user.adresseDomicile.rue}}</dd>
+                        <dd> {{ app.user.adresseDomicile.cp}}&nbsp;  {{ app.user.adresseDomicile.ville}}</dd>
+
+                    </dl>
+            </div>
+            {% endif %}
+
+            <h3>Adresse Livraison</h3>
+            {% for adresse in livraison %}
+                <div class="radio ">
+                    <label for="radio">
+                        <input type="radio" name="addr" value="{{ adresse.id }}">
+
+
+                        <dl>
+
+                            <dt>{{ adresse.nom}}&nbsp; {{ adresse.prenom}}</dt>
+                            <dd> {{ adresse.numero}}&nbsp;  {{ adresse.rue}}</dd>
+                            <dd> {{ adresse.cp}}&nbsp;  {{ adresse.ville}}</dd>
+
+                        </dl>
+                    </label>
+                </div>
+            {% endfor %}
+            <input class="btn btn-success btn-block" type="submit" value="Valider">
+        </form>
+
+    </div>
+
+
+</div>{#conatainer#}
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "@VapamaxMain/main_n2.html.twig" %}
+{% block presentation %}
+
+    <div class="row">
+
+
+        <div id="filtre_block">
+            {#<h5>Affiner votre recherche</h5>#}
+            <div class="col-md-10 col-md-offset-1">
+                <div class="filtre">
+
+                    <form action="#" method="post" role="form">
+                        <label class="radio-inline">
+                            <input type="radio" name="optradio" >Tout voir
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="optradio">Fruitées
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="optradio">Gourmandes
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="optradio">Mentholés
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="optradio">Tabac
+                        </label>
+                    </form>
+                </div>
+                </div>
+        </div>
+
+        <div class="col-md-10 col-md-offset-1">
+        </div>
+
+        <div class="col-md-10 col-md-offset-1">
+
+            {% for produit in produits %}
+
+
+                <div class="col-md-3">
+                    <div class="wrapper">
+                        {#<img src="{{ asset('bundles/app/images/'~produit.id~'.jpg') }}" class="img-thumbnail"#}
+                             {#alt="Cinque Terre" width="304" height="236">#}
+                        <img src="{{ asset('uploads/produits/'~produit.path) }}" class="img-thumbnail" >
+                        <div class="ribbon-wrapper-green"><div class="ribbon-green">NOUVEAU</div></div>
+                    </div>
+                    {% if produit.isDispo == false %}
+                        <span class="indisponible">INDISPONIBLE</span>
+                    {% endif %}
+                    <br/><br>
+                    <div class="stup">
+                        <p style="font-size: 26px" align="center"><b>{{ produit.prix |number_format(2, '.', ',') }}
+                                &nbsp;&euro;</b></p>
+                        <h6 align="center"><b>{{ produit.nom }}</b></h6>
+                        <p style="font-size: 10px" align="center">
+                            {{ produit.description| striptags | slice(0, 90) }}
+                        </p>
+
+                        {#<a class="btn btn-success btn-block" href="{{  path('vapamax_main_panier_ajout', {'id':produit.id}) }}">AJOUTER AU PANIER</a>#}
+                        <a class="btn btn-success btn-block" href="
+                        {% if produit.categorie.id==2 %}
+
+                        {{  path('vapamax_main_presentation', {'id':produit.id}) }}
+                        {% else %}
+                         {{  path('vapamax_main_panier_ajout', {'id':produit.id}) }}
+                        {% endif %}
+                        ">AJOUTER AU PANIER</a>
+                        <a class="btn btn-info btn-block" href="{{  path('vapamax_main_presentation', {'id':produit.id}) }}">EN SAVOIR + </a>
+                    </div>
+                </div>
+            {% endfor %}
+
+
+
+
+
+        </div>
+    <div class="col-md-10 col-md-offset-1">
+        <div class="navigation pull-right">
+            {{ knp_pagination_render(produits) }}
+        </div>
+    </div>
+
+
+{% endblock %}

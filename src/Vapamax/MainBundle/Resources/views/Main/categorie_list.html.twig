@@ -1,0 +1,8 @@
+    <ul class="{{ class }}">
+        <li><a href="{{ path('vapamax_main_homepage') }}">Accueil</a></li>
+    {% for categorie in categories %}
+
+        <li><a href="{{ path('vapamax_main_categorie',{categorie:categorie.nom}) }}">{{ categorie.nom }}</a></li>
+       {% endfor %}
+        <li><a href="">Contact</a></li>
+    </ul>
