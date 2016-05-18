@@ -1,0 +1,75 @@
+{% extends '@VapamaxMain/main_n2.html.twig' %}
+{% block body %}
+    {% include ":sidebar:sidebar.html.twig" %}
+    <div class="col-md-10 admin">
+        <div class="col-md-offset-0">
+         <div class="col-md-4 admin text-center">
+                <a href="{{ path('produit_show', { 'id': produit.id }) }}">
+                    {#<img src="{{ asset('bundles/app/images/'~produit.id~'.jpg') }}" class="img-thumbnail"#}
+                         {#alt="Cinque Terre" width="100%">#}
+                      <img src="{{ asset('uploads/produits/'~produit.path) }}" class="img-thumbnail" >
+                </a>
+            </div>
+<div class="col-md-8">
+
+
+            <h1>Fiche Produit</h1>
+
+            <table class="table table-bordered table-striped ">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ produit.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ produit.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th>Marque</th>
+                        <td>{{ produit.marque }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ produit.description }}</td>
+                    </tr>
+                    <tr>
+                        <th>Prix</th>
+                        <td>{{ produit.prix }}</td>
+                    </tr>
+                    <tr>
+                        <th>Dispo</th>
+                        <td>
+                            {% if produit.isDispo %}
+                                <button class="btn btn-success btn-xs">Oui</button>
+                            {% else %}
+                                <button class="btn btn-danger btn-xs">Non</button>
+                            {% endif %}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+        <ul>
+            <li>
+                <a class="btn btn-default pull-left" href="{{ path('produit_index') }}">Back to the list</a>
+            </li>
+            <li>
+                <a class="btn btn-warning pull-right" href="{{ path('produit_edit', { 'id': produit.id }) }}">Edit</a>
+            </li>
+            <br><br>
+            <hr>
+            <li>
+                {{ form_start(delete_form)|nl2br }}
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                {{ form_end(delete_form) }}
+            </li>
+        </ul>
+</div>
+
+
+        </div>
+    </div>
+         </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="container">
+
+<h2>Mon compte :</h2>
+    <hr>
+    <div class="well">
+
+
+    <hr>
+{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'form-group' } }) }}
+    {{ form_widget(form) }}
+<br>
+    <div>
+        <input class="btn btn-block btn-success" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+    </div>
+
+{{ form_end(form) }}
+</div>
+</div>

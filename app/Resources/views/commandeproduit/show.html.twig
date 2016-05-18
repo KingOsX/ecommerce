@@ -1,0 +1,74 @@
+{% extends '@VapamaxMain/main_n2.html.twig' %}
+
+{% block body %}
+     {% include ":sidebar:sidebar.html.twig" %}
+<div class="col-md-8 col-md-offset-1 admin ">
+    <h1>Commande # {{ commandeProduit.reference }}</h1>
+
+
+    <table class="table table-bordered table-striped">
+        <tbody>
+{{ dump(commandeProduit) }}
+            <tr>
+                {#<th>Id</th>#}
+                {#<td>{{ commandeProduit.id }}</td>#}
+            </tr>
+            <tr>
+                <th>Produit</th>
+                <td>{{ commandeProduit.produit.nom }}</td>
+            </tr>
+            <tr>
+                <th>Quantite</th>
+
+                <td>{{ commandeProduit.quantite }}</td>
+            </tr>
+
+            <tr>
+                <th>Prix du produit</th>
+
+                <td>{{ commandeProduit.produit.prix }}</td>
+            </tr>
+
+
+            <tr>
+                <th>Reference</th>
+                <td>{{ commandeProduit.reference }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a class="btn btn-primary pull-left" href="{{ path('admin_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a class="btn btn-warning pull-right" href="{{ path('admin_edit', { 'id': commandeProduit.id }) }}">Edit</a>
+        </li>
+
+        <br><br>
+        <hr>
+        <li>
+            {{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="hidden" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+    </div>
+    <div class="col-md-4 col-md-offset-1 admin ">
+        <h2>Information sur la livraison</h2>
+        <hr>
+        <address class="well">
+            <strong>{{ commandeProduit.commande.adresseLivraison.nom }}  {{ commandeProduit.commande.adresseLivraison.prenom }}</strong><br>
+            {{ commandeProduit.commande.adresseLivraison.numero }}  {{ commandeProduit.commande.adresseLivraison.rue }}<br>
+            {{ commandeProduit.commande.adresseLivraison.complement }}<br>
+            {{ commandeProduit.commande.adresseLivraison.cp }}  {{ commandeProduit.commande.adresseLivraison.ville }}<br>
+            {#<abbr title="Phone">P:</abbr> (123) 456-7890#}
+        </address>
+        {#{{ commandeProduit.commande.user.nom }}  {{ commandeProduit.commande.user.prenom }}#}
+
+
+
+
+
+    </div>
+{% endblock %}

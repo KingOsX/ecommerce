@@ -1,0 +1,30 @@
+{% extends '@VapamaxMain/main_n2.html.twig' %}
+{% block body %}
+    {% include ":sidebar:sidebar.html.twig" %}
+
+    <div class="col-md-8 col-md-offset-1 admin ">
+
+
+
+    <h1>Ajouter un produit</h1>
+
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+
+        <hr>
+        <input class="btn btn-success pull-right" type="submit" value="Valider" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a class="btn btn-primary pull-left" href="{{ path('produit_index') }}">Retour au menu</a>
+        </li>
+    </ul>
+    </div>
+
+
+
+
+
+{% endblock %}

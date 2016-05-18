@@ -1,0 +1,67 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block stylesheet %}
+{{ parent() }}
+
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/style2.css') }}"/>
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/animate-custom.css') }}"/>
+{% endblock %}
+
+{% block fos_user_content %}
+
+
+    <section>
+        <div id="container_login">
+
+            <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
+            <a class="hiddenanchor" id="toregister"></a>
+            <a class="hiddenanchor" id="tologin"></a>
+            <div id="wrapper">
+                <div id="login" class="animate form">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+                    <form role="form" action="{{ path("fos_user_security_check") }}" method="post" class="login-form"
+                          autocomplete="on">
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+                        <h1>Connectez-vous</h1>
+                        <p>
+                            <label class="sr-only"
+                                   for="username" data-icon="u">{{ 'security.login.username'|trans }}</label>
+                            <input type="text" name="_username" placeholder="pseudo"
+                                   class="form-username form-control"
+                                   id="username">
+                        </p>
+                        <p>
+                            <label class="sr-only"
+                                   for="password" data-icon="p">{{ 'security.login.remember_me'|trans }}</label>
+                            <input type="password" name="_password" placeholder="Password"
+                                   class="form-password form-control" id="form-password">
+                        </p>
+                        <p class="keeplogin">
+                            <input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping"/>
+                            <label for="loginkeeping">Keep me logged in</label>
+                        </p>
+                        <p class="login button">
+                            <input class="btn bg-success" type="submit" value="Valider"/>
+                        </p>
+                        <p class="change_link">
+                            Pas encore inscrit ?
+                            <a href="{{ path('fos_user_registration_register') }}" class="to_register">Inscription</a>
+                        </p>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+{% endblock fos_user_content %}
+
+
+

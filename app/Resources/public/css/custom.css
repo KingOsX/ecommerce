@@ -1,0 +1,102 @@
+/*ce fichier est dedie a notre code perso css*/
+
+.b-body{
+    min-height:500px;
+
+}
+
+.margin-container-top {
+    margin-top: 60px;
+}
+
+.shadow {
+    box-shadow: 0px 0px 1px 1px #000
+}
+
+.AuthorName {
+    margin-left: 15px;
+    margin-bottom: -2px
+}
+
+.SidebarShow {
+    margin-top: 59px;
+    height: 150px;
+}
+
+.ToolsButton {
+    margin-top: 60px;
+}
+
+.colorBlock {
+    display: block;
+    float: left;
+    height: 15px;
+    width: 15px;
+    margin-right: 3px;
+    border: 1px solid #CCC;
+}
+
+.header-logo {
+    height: 50px;
+    position: absolute;
+    top: 0;
+
+}
+
+
+/*************************************
+******* MENU DEROULANT PANIER*********
+***************************************/
+#menu-deroulant, #menu-deroulant ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+
+#menu-deroulant li {
+    /* on place les liens du menu horizontalement */
+    display: inline-block;
+}
+#menu-deroulant ul li {
+    /* on enlève ce comportement pour les liens du sous menu */
+    display: inherit;
+}
+#menu-deroulant a {
+    text-decoration: none;
+    display: block;
+    color:#fff;
+}
+#menu-deroulant ul {
+    position: absolute;
+    /* on cache les sous menus complètement sur la gauche */
+    top: -800px;
+    text-align: left;
+    z-index: 1000;
+    right: 0;
+}
+#menu-deroulant li:hover ul {
+    /* Au survol des li du menu on replace les sous menus */
+    top: auto;
+    background-color: #222;
+    width:260px;
+    text-align: right;
+    -webkit-transition: width 20s; /* For Safari 3.1 to 6.0 */
+     transition: 8s top 0.3s;
+}
+.badge{
+    vertical-align: sub;
+}
+#panier  {
+    color: whitesmoke;
+    padding-right: 20px;
+}
+#panier li{
+    text-align: center;
+}
+/**************************************
+******* FIN DU MENU DEROULANT PANIER **
+***************************************/
+.well p{
+    font-weight: bold;
+}

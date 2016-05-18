@@ -1,0 +1,16 @@
+vapamax_user:
+    resource: "@VapamaxUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+vapamax_main_produit:
+    resource: "@VapamaxMainBundle/Controller/ProduitController.php"
+    type:     annotation
+
+vapamax_main:
+    resource: "@VapamaxMainBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+

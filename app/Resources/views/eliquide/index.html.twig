@@ -1,0 +1,66 @@
+{% extends '@VapamaxMain/main_n2.html.twig' %}
+{% block body %}
+    {% include ":sidebar:sidebar.html.twig" %}
+   <div class="col-md-8 col-md-offset-1 admin ">
+            <h1>Liste des E-liquides</h1>
+<hr>
+            <table id="tableC" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th style="text-align: center">Id</th>
+                        <th style="text-align: center">Nom</th>
+                        <th style="text-align: center">Marque</th>
+                        <th style="text-align: center">Description</th>
+                        <th style="text-align: center">Prix</th>
+                        <th style="text-align: center">Dispo</th>
+                        <th style="text-align: center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for eliquide in eliquides %}
+                    <tr>
+                        <td style="text-align: center">
+
+                            <a href="{{ path('eliquide_show', { 'id': eliquide.id }) }}">
+                                {#<img src="{{ asset('bundles/app/images/'~eliquide.id~'.jpg') }}" class="img-rounded"#}
+                                {#alt="Cinque Terre" width="100" height="100">#}
+                             <img src="{{ asset('uploads/produits/'~eliquide.path) }}" width="100" height="100" class="img-thumbnail" >
+                            </a>
+                        </td>
+                        <td  style="text-align: center">{{ eliquide.nom }}</td>
+                        <td style="text-align: center">{{ eliquide.marque }}</td>
+                        <td style="text-align: left">{{ eliquide.description| striptags | slice(0, 15) }}...</td>
+                        <td style="text-align: center">{{ eliquide.prix }} &euro;</td>
+
+                        <td>
+                            {% if eliquide.isDispo %}
+                                <button class="btn btn-success btn-xs center-block">Oui</button>
+                            {% else %}
+                                <button class="btn btn-danger btn-xs center-block">Non</button>
+                            {% endif %}
+                        </td>
+
+                        <td>
+
+                                     <a class="btn btn-group-vertical  btn-group-xs btn-info" href="{{ path('eliquide_show', { 'id': eliquide.id }) }}">Voir</a>
+
+                                    <a class="btn btn-group-vertical btn-warning pull-right"  href="{{ path('eliquide_edit', { 'id': eliquide.id }) }}">Modifier</a>
+
+
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <hr>
+
+            <ul>
+                <li>
+                    <a class="btn btn-success " href="{{ path('eliquide_new') }}">Ajouter un nouveau E-liquide</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+         </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends '@VapamaxMain/main_n2.html.twig' %}
+
+{% block body %}
+           {% include ":sidebar:sidebar.html.twig" %}
+<div class="col-md-4 col-md-offset-1 admin ">
+    <h1>Validation des commandes</h1>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <input class="btn btn-success pull-right" type="submit" value="Valider les modifications" />
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a class="btn bg-primary pull-left" href="{{ path('admin_index') }}">Retour</a>
+        </li>
+        <br><br>
+        <li>
+            {{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="hidden" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends '@VapamaxMain/main_n2.html.twig' %}
+
+{% block body %}
+       {% include ":sidebar:sidebar.html.twig" %}
+   <div class="col-md-8 col-md-offset-1 admin ">
+    <h1>Ajouter un nouveau E-liquide</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+
+
+
+    </form>
+
+    <ul>
+        <li>
+            <a href="{{ path('eliquide_index') }}">Back to the list</a>
+        </li>
+    </ul>
+     </div>
+  </div>
+        </div>
+    </div>
+{% endblock %}

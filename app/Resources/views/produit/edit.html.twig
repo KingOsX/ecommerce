@@ -1,0 +1,32 @@
+{% extends '@VapamaxMain/main_n2.html.twig' %}
+
+{% block body %}
+{% include ":sidebar:sidebar.html.twig" %}
+
+            <div class="container admin pull-right">
+                <div class="col-md-offset-0">
+                    <h1>Modifier un Produit</h1>
+
+
+                    {{ form_start(edit_form) }}
+                        {{ form_widget(edit_form) }}
+                        <input type="submit" value="Edit" />
+                    {{ form_end(edit_form) }}
+
+                    <ul>
+                        <li>
+                            <a href="{{ path('produit_index') }}">Back to the list</a>
+                        </li>
+                        <li>
+                            {{ form_start(delete_form) }}
+                                <input type="submit" value="Delete">
+                            {{ form_end(delete_form) }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends '@VapamaxMain/main_n2.html.twig' %}
+
+{% block body %}
+    {% include ":sidebar:sidebar.html.twig" %}
+    <div class="col-md-8 col-md-offset-1 admin ">
+        <h1>Liste des Commandes</h1>
+
+        <table id="tableC" class="table table-hover table-bordered">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th class="text-center">Nom du client</th>
+                <th class="text-center">Adresse du client</th>
+                {#<th>Quantite</th>#}
+                <th class="text-center">Reference</th>
+                <th class="text-center">Validation</th>
+                <th class="text-center">Date de Commande</th>
+                <th class="text-center">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for commandeProduit in commandeProduits  %}
+
+
+
+
+
+            <tr>
+                <td>{{ commandeProduit.commande.id }}</td>
+                <td class="text-center">{{ commandeProduit.commande.adresseLivraison.nom }} {{ commandeProduit.commande.adresseLivraison.prenom }}</td>
+                <td class="text-center">
+                    {{ commandeProduit.commande.adresseLivraison.numero }}
+                    {{ commandeProduit.commande.adresseLivraison.rue }}
+                    {{ commandeProduit.commande.adresseLivraison.complement }}
+                    {{ commandeProduit.commande.adresseLivraison.cp }}
+                    {{ commandeProduit.commande.adresseLivraison.ville }}
+                </td>
+                {#<td>{{ commandeProduit.quantite }}</td>#}
+
+                <td class="text-center"><a
+                            href="{{ path('admin_show', { 'id': commandeProduit.id }) }}">#{{ commandeProduit.reference }}</a>
+                </td>
+                <td class="text-center">
+                    {% if commandeProduit.isValid %}
+                        <button class="btn btn-success btn-xs center-block">Oui</button>
+                    {% else %}
+                        <button class="btn btn-danger btn-xs center-block">Non</button>
+                    {% endif %}
+                </td>
+                <td class="text-center">{{ commandeProduit.commande.createdAt|date( "d/m/Y --  H:i") }}</td>
+
+                <td class="text-center">
+
+                    <a class="btn btn-group-vertical  btn-group-xs btn-info"
+                       href="{{ path('admin_show', { 'id': commandeProduit.id }) }}">Voir</a>
+
+                    <a class="btn btn-group-vertical btn-warning pull-right"
+                       href="{{ path('admin_edit', { 'id': commandeProduit.id }) }}">Editer</a>
+
+
+                </td>
+            </tr>
+
+
+            {% endfor %}
+            </tbody>
+        </table>
+
+        {#<ul>#}
+        {#<li>#}
+        {#<a href="{{ path('admin_new') }}">Create a new entry</a>#}
+        {#</li>#}
+        {#</ul>#}
+    </div>
+{% endblock %}

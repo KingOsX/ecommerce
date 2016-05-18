@@ -1,0 +1,202 @@
+/*ce fichier est dedie a la surcharge de bootstrapp*/
+
+/**********************************************************
+***********         MENU           ************************
+
+**********************************************************/
+body{
+    background-image: url("../images/bgbody.jpg");
+    background-repeat: repeat;
+}
+.menu__list li{
+    font-size:20px;
+    font-family:Impact;
+    padding:5px 5px 20px 5px;
+    margin-right:10px;
+}
+.menu__list li a:hover{
+    color:#AA3333;
+}
+.menu__list {
+    position: relative;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-top: 60px;
+    width: 100%;
+}
+a:link
+{
+    text-decoration:none;
+}
+
+/**********************************************************
+*************CSS RIBBON CORNER*****************************
+**********************************************************/
+.wrapper {
+    margin: 50px auto;
+    width: 250px;
+    height: 150px;
+    background: white;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+    -moz-box-shadow:    0px 0px 8px rgba(0,0,0,0.3);
+    box-shadow:         0px 0px 8px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 90;
+}
+
+.ribbon-wrapper-green {
+    width: 85px;
+    height: 88px;
+    overflow: hidden;
+    position: absolute;
+    top: -3px;
+    right: -3px;
+}
+
+.ribbon-green {
+    font: bold 15px Sans-Serif;
+    color: #333;
+    text-align: center;
+    text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform:    rotate(45deg);
+    -ms-transform:     rotate(45deg);
+    -o-transform:      rotate(45deg);
+    position: relative;
+    padding: 7px 0;
+    left: -5px;
+    top: 15px;
+    width: 120px;
+    background-color: #BFDC7A;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#BFDC7A), to(#8EBF45));
+    background-image: -webkit-linear-gradient(top, #BFDC7A, #8EBF45);
+    background-image:    -moz-linear-gradient(top, #BFDC7A, #8EBF45);
+    background-image:     -ms-linear-gradient(top, #BFDC7A, #8EBF45);
+    background-image:      -o-linear-gradient(top, #BFDC7A, #8EBF45);
+    color: #6a6340;
+    -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+    -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
+    box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
+}
+
+.ribbon-green:before, .ribbon-green:after {
+    content: "";
+    border-top:   3px solid #6e8900;
+    border-left:  3px solid transparent;
+    border-right: 3px solid transparent;
+    position:absolute;
+    bottom: -3px;
+}
+
+.ribbon-green:before {
+    left: 0;
+}
+.ribbon-green:after {
+    right: 0;
+}
+.stup{
+    margin-top: 20px;
+}
+/**********END CSS RIBBON CORNER*********************/
+
+/*****************BADGE CSS BOOTSTRAP*****************/
+.badge{
+    margin-left: 10px;
+    background-color: #EE2944;
+}
+/***************    DASHBOARD   ************************/
+#menu_admin{
+    margin-top: 30px;
+    background-color: #000;
+}
+#menu_admin h4{
+    padding-top: 30px;
+    color: whitesmoke;
+    text-align: center;
+    font-family:Helvetica;
+    border-bottom: 3px solid white;
+   padding-bottom: 20px;
+    font-weight:bolder;
+
+
+
+}
+#menu_admin ul li a {
+
+    color: whitesmoke;
+    text-align: left;
+    font-family:Helvetica;
+
+}
+.admin{
+    margin-top: 90px;
+}
+#menu_admin ul li a:hover{
+    color: black;
+    border-radius: 0px;
+
+}
+#menu_admin ul li{
+    list-style-type: katakana;
+}
+/***************    Filtre   ************************/
+#filtre_block{
+    background-color: rgba(2,2,2,0.2);
+    height: 75px;
+}
+.radio-inline{
+    font-weight: bold;
+    font-size: 20px;
+}
+#filtre_block h5{
+    color: whitesmoke;
+    font-size: 18px;
+    margin-left: 20px;
+    padding-top: 5px;
+    font-weight: bold;
+}
+.filtre{
+    margin-top: 25px;
+    margin-left: 25%;
+    color: black;
+}
+/***************    presentation   ************************/
+.presentation-prix{
+    font-size:30px;
+    text-align: center;
+    font-family: Impact, serif;
+}
+/***************    FOOTER   ************************/
+#footer{
+    padding-top: 50px;
+}
+.footer{
+    background-color: #000;
+    height: auto;
+    list-style-type: none;
+    text-align: left;
+    margin-top: 50px;
+
+}
+.footer li{
+    list-style-type: none;
+}
+.footer h4{
+     color: whitesmoke;
+     border-bottom: dotted 1px whitesmoke;
+     padding-bottom: 10px;
+    width: 60%;
+ }
+.footer h4:last-child{
+    border-bottom: none;
+}
+.footer ul li a,address{
+    color: skyblue;
+}
+/*****************vhrckbox***********************/
